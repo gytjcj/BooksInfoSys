@@ -7,6 +7,7 @@ import com.bwry.entity.User;
 
 public interface LoginService {
 public User login(String name,String password);
-//鐢ㄦ埛涔︾睄淇℃伅鏌ョ湅	
+
+/* 用户书籍信息查看 */	
 public List<Book> bookLook(String type, String name,int count);
 }

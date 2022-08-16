@@ -18,15 +18,16 @@ import com.bwry.entity.LendBook;
 import com.bwry.service.BookLoginService;
 import com.bwry.service.impl.BookLoginServiceImpl;
 
+@SuppressWarnings({ "serial", "unused" })
 @WebServlet("/Book")
 public class BookServlet extends HttpServlet {
-	//注入servlet对象
+	/* 注入servlet对象 */
 	private BookLoginService bookLoginService = new BookLoginServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//解决乱码
+		/* 解决乱码 */
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 
@@ -42,7 +43,7 @@ public class BookServlet extends HttpServlet {
 			if (list != null) {
 				req.setAttribute("list", list);
 				// System.out.println(list.toString());
-				// System.out.println("�鿴�ɹ�");
+				// System.out.println("锟介看锟缴癸拷");
 				req.getRequestDispatcher("/BooksLook.jsp").forward(req, resp);
 				// req.getRequestDispatcher("/UserBookLook.jsp").forward(req,
 				// resp);
@@ -50,7 +51,7 @@ public class BookServlet extends HttpServlet {
 				resp.sendRedirect("/BooksInfoSys/Datum.jsp");
 			}
 			break;
-		//图书修改
+		/* 图书修改 */
 		case "UpdateBook":
 			int uid = Integer.valueOf(req.getParameter("uid"));
 			// String utype = req.getParameter("utype");
@@ -61,11 +62,11 @@ public class BookServlet extends HttpServlet {
 			List<Book> Blist = bookLoginService.bookUpdate(books);
 			if (Blist != null) {
 				req.setAttribute("ulist", Blist);
-				//修改成功
+				/* 修改成功 */
 				req.getRequestDispatcher("/UpdateBook.jsp").forward(req, resp);
 				;
 			} else {
-				// 修改失败
+				/* 修改失败 */
 				resp.sendRedirect("/BooksInfoSys/Datum.jsp");
 			}
 
@@ -75,16 +76,16 @@ public class BookServlet extends HttpServlet {
 			int did = Integer.valueOf(req.getParameter("did"));
 			int Did = bookLoginService.bookDel(did);
 			if (Did > 0) {
-				//成功
+				/* 成功 */
 				req.getRequestDispatcher("/Book?type=BookLook").forward(req, resp);
 				;
 			} else {
-				//失败
+				/* 失败 */
 				resp.sendRedirect("/BooksInfoSys/Datum.jsp");
 			}
 			break;
 		
-			/* ���� */
+			/* 锟斤拷锟斤拷 */
 //		case "LendBook":
 //			String Uname = req.getParameter("Uname");
 //			String Bname = req.getParameter("Bname");
@@ -94,9 +95,9 @@ public class BookServlet extends HttpServlet {
 ////				HttpSession session = req.getSession();
 ////				session.setAttribute("lend", lend);
 //				req.getRequestDispatcher("/LendBook.jsp").forward(req, resp);
-//				System.out.println("�ɹ���");
+//				System.out.println("锟缴癸拷锟斤拷");
 //			}else {
-//				System.out.println("ʧ����");
+//				System.out.println("失锟斤拷锟斤拷");
 //				resp.sendRedirect("/BooksInfoSys/UserBookLook.jsp");
 //			} 
 //			break;
@@ -107,7 +108,7 @@ public class BookServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 解决乱码
+		/* 解决乱码 */
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
@@ -125,7 +126,7 @@ public class BookServlet extends HttpServlet {
 			if (list != null) {
 				req.setAttribute("list", list);
 				// System.out.println(list.toString());
-				// System.out.println("�鿴�ɹ�");
+				// System.out.println("锟介看锟缴癸拷");
 				req.getRequestDispatcher("/BooksLook.jsp").forward(req, resp);
 				// req.getRequestDispatcher("/UserBookLook.jsp").forward(req,
 				// resp);
@@ -135,7 +136,7 @@ public class BookServlet extends HttpServlet {
 			break;
 		/*添加图书 */
 		case "AddBook":
-			/* ��ȡ�����Ϣ */
+			/* 锟斤拷取锟斤拷锟斤拷锟较� */
 			String Atype = req.getParameter("Atype");
 			String Aname = req.getParameter("Aname");
 			int Acount = Integer.valueOf(req.getParameter("Acount"));
@@ -143,18 +144,18 @@ public class BookServlet extends HttpServlet {
 			Book book1 = new Book(Atype, Aname, Acount);
 			int result = bookLoginService.bookAdd(book1);
 			if (result > 0) {
-				// ͼ��
+				// 图锟斤拷
 				// List<Book> list = bookLoginService.bookLook(null, null, 0);
 				// req.setAttribute("list", list);
-				// 成功
+				/* 成功 */
 				req.getRequestDispatcher("/Book?type=BookLook").forward(req, resp);
 				;
 			} else {
-				// 失败
+				/* 失败 */
 				resp.sendRedirect("/BooksInfoSys/Datum.jsp");
 			}
 			break;
-		// 修改图书
+		/* 修改图书 */
 		case "UpdateBook":
 			/* 拿到name */
 			int uid = Integer.valueOf(req.getParameter("uid"));
@@ -165,11 +166,11 @@ public class BookServlet extends HttpServlet {
 			int resultCUD = bookLoginService.bookChange(books);
 			if (resultCUD > 0) {
 				// req.setAttribute("list", ulist);
-				// 成功
+				/* 成功 */
 				req.getRequestDispatcher("/Book?type=BookLook").forward(req, resp);
 				;
 			} else {
-				//失败
+				/* 失败 */
 				resp.sendRedirect("/BooksInfoSys/Datum.jsp");
 			}
 			break;

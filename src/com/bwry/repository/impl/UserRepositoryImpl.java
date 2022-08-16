@@ -13,8 +13,9 @@ import com.bwry.repository.UserRepository;
 import com.bwry.utils.JDBCTools;
 
 public class UserRepositoryImpl implements UserRepository {
-	// 与数据库交互
-	//管理员
+	
+	/* 与数据库交互 */
+	/* 管理员 */
 	@Override
 	public User getUser(String name, String password) {
 		
@@ -44,7 +45,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	//用户查看图书
+	/* 用户查看图书 */
 	public List<Book> getBook(String type, String name, int count) {
 		// TODO Auto-generated method stub
 		List<Book> list = new ArrayList<Book>();

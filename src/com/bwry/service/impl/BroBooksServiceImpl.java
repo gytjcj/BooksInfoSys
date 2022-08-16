@@ -15,14 +15,14 @@ public class BroBooksServiceImpl implements BroBooksService{
 	BroBooksRepository broBooksRepository = new BroBooksRepositoryImpl();
 	BookRepository bookRepository=new BookRepositoryImpl();
 	
-	//鍥句功鏌ョ湅
+	/* 图书查看 */
 	public List<BroBooks> BroBooks(int id,String userName,String bookName) {
 		// TODO Auto-generated method stub
 		return broBooksRepository.getBroBooks(id, userName, bookName);
 	}
 
 	
-//杩樹功
+	/* 还书 */
 	@Override
 	public void ReturnBooks(String userName, String bookName) {
 		Book book=bookRepository.Borrow(bookName);
@@ -36,7 +36,8 @@ public class BroBooksServiceImpl implements BroBooksService{
 			bookRepository.changeBook(book);
 		}
 	}
-//鍊熶功	
+
+	/* 借书 */	
 	@Override
 	public void BroBooks(String userName, String bookName) {
 		Book book=bookRepository.Borrow(bookName);
@@ -52,7 +53,7 @@ public class BroBooksServiceImpl implements BroBooksService{
 		
 	}
 
-//鏌ョ湅鍊熼槄淇℃伅
+	/* 借阅信息查看 */
 	@Override
 	public List<com.bwry.entity.BroBooks> UBroBooks(int id, String userName, String bookName) {
 		// TODO Auto-generated method stub
@@ -60,7 +61,7 @@ public class BroBooksServiceImpl implements BroBooksService{
 	}
 
 
-
+	/* 还书id */
 	@Override
 	public int returnBooks(int id) {
 		// TODO Auto-generated method stub

@@ -5,16 +5,21 @@ import java.util.List;
 import com.bwry.entity.Users;
 
 public interface UsersRepository {
-//ÓÃ»§µÇÂ¼
+	/* ç”¨æˆ·ç™»å½• */
 	public	Users getUsers(String name, String password);
-//²é¿´ÓÃ»§
+
+	/* æŸ¥çœ‹ç”¨æˆ· */
 	public List<Users> LookUsers(String name,String sex,String phone);
-//Ìí¼ÓÓÃ»§
+
+	/* æ·»åŠ ç”¨æˆ· */
 	public int addUsers(Users user);
-//ĞŞ¸ÄÓÃ»§
+
+	/* ä¿®æ”¹ç”¨æˆ· */
 	public int changeUsers(Users users);
-	//ĞŞ¸ÄÓÃ»§È¡Öµ
+
+	/* ä¿®æ”¹ç”¨æˆ·å–å€¼Öµ */
 		public List<Users> updateUsers(Users users);
-//É¾³ıÓÃ»§
+
+	/* åˆ é™¤ç”¨æˆ· */
 	public int delUsers(int did);
 }

@@ -8,6 +8,7 @@ import com.bwry.entity.User;
 public interface UserRepository {
 
 	public	User getUser(String name, String password);
-	//用户查看图书
+
+	/* 鏌ョ湅鍥句功 */
 	public List<Book> getBook(String type,String name,int count);
 }

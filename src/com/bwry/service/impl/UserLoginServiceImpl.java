@@ -18,34 +18,34 @@ public class UserLoginServiceImpl implements UserLoginService {
 	}
 
 	@Override
-	//查看用户
+	/* 查看用户 */
 	public List<Users> usersLook(String name, String sex, String phone) {
 		// TODO Auto-generated method stub
 		return UsersRepository.LookUsers(name, sex, phone);
 	}
 
 	@Override
-	//添加用户
+	/* 添加用户 */
 	public int usersAdd(Users user) {
 		// TODO Auto-generated method stub
 		return UsersRepository.addUsers(user);
 	}
 
 	@Override
-	//修改用户
+	/* 修改用户 */
 	public int usersChange(Users users) {
 		// TODO Auto-generated method stub
 		return UsersRepository.changeUsers(users);
 	}
 		@Override
-		//修改用户取值
+		/* 修改用户取值 */
 		public List<Users> usersUpdate(Users users) {
 			// TODO Auto-generated method stub
 			return UsersRepository.updateUsers(users);
 		}
 
 	@Override
-	//删除用户
+	/* 删除用户 */
 	public int usersDel(int did) {
 		// TODO Auto-generated method stub
 		return UsersRepository.delUsers(did);

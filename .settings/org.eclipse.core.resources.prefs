@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/com/bwry/repository/BookRepository.java=UTF-8
+encoding//src/com/bwry/repository/impl/BookRepositoryImpl.java=UTF-8
+encoding//src/com/bwry/service/BookLoginService.java=UTF-8
+encoding//src/com/bwry/service/impl/BookLoginServiceImpl.java=UTF-8
+encoding//src/com/bwry/servlet/BookServlet.java=UTF-8
+encoding//src/com/bwry/servlet/LoginServlet.java=UTF-8
+encoding//src/com/bwry/servlet/UsersServlet.java=UTF-8

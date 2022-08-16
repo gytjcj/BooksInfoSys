@@ -4,8 +4,7 @@
 		<!-- 指定连接数据源的基本属性 -->
 		<!--默认是mysql数据库-->
 		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/test?
-			useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/test?serverTimezone=GMT&amp;useUnicode=true&amp;characterEncoding=UTF-8</property>
 		<!-- 数据库的用户名  默认值：null -->
 		<property name="user">root</property>
 		<!-- 数据库的密码  默认值：null -->

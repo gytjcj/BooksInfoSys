@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface BroBooksService {
 	public List<BroBooks> BroBooks(int id,String userName,String bookName);
-	//鍊熶功
+
+	/* 借书 */
 	public void BroBooks(String userName,String bookName);
-	//杩樹功
+	/*还书*/
 	public void ReturnBooks(String userName,String bookName);
-	//鐢ㄦ埛鍊熼槄淇℃伅鏌ョ湅
+	/*用户借阅信息查看*/
 	public List<BroBooks> UBroBooks(int id, String userName, String bookName);
-	//杩樹功
+
+	/* 还书 */
 	public int returnBooks(int id);
 }

@@ -12,10 +12,11 @@ import com.bwry.entity.LendBook;
 import com.bwry.repository.BookRepository;
 import com.bwry.utils.JDBCTools;
 
+@SuppressWarnings("unused")
 public class BookRepositoryImpl implements BookRepository {
 
 	@Override
-	//查看
+	/* 查看图书 */
 	public List<Book> getBook(String type, String name, int count) {
 		
 		// TODO Auto-generated method stub
@@ -48,7 +49,7 @@ public class BookRepositoryImpl implements BookRepository {
 	}
 	
 	@Override
-	//添加
+	/* 添加 */
 	public int addBook(Book book) {
 		// TODO Auto-generated method stub
 		Connection connection = JDBCTools.getConnection();
@@ -82,7 +83,7 @@ public class BookRepositoryImpl implements BookRepository {
 	
 
 	@Override
-	//修改
+	/* 修改 */
 	public int changeBook(Book books) {
 		// TODO Auto-generated method stub
 		Connection connection = JDBCTools.getConnection();
@@ -115,7 +116,8 @@ public class BookRepositoryImpl implements BookRepository {
 		}
 		return resultCUD;
 	}
-	//修改取值ֵ
+
+	/* 修改取值 */
 	@Override
 	public List<Book> updateBook(Book books) {
 		// TODO Auto-generated method stub
@@ -146,7 +148,7 @@ public class BookRepositoryImpl implements BookRepository {
 	}
 
 	@Override
-	//下架
+	/* 下架 */
 	public int delBook(int did) {
 		// TODO Auto-generated method stub
 		Connection connection = JDBCTools.getConnection();
@@ -174,7 +176,7 @@ public class BookRepositoryImpl implements BookRepository {
 		}
 		return resultCUD;
 	}
-//	//����
+//	//锟斤拷锟斤拷
 //	@Override
 //	public int lend(LendBook lend) {
 //		// TODO Auto-generated method stub
@@ -206,6 +208,7 @@ public class BookRepositoryImpl implements BookRepository {
 //	}
 
 	@Override
+	/* 还书 */
 	public Book Borrow(String bookname) {
 		// TODO Auto-generated method stub
 		Connection connection = JDBCTools.getConnection(); 

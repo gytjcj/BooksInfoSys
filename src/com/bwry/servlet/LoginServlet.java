@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import com.bwry.entity.Book;
 import com.bwry.entity.User;
 import com.bwry.entity.Users;
-import com.bwry.repository.impl.BookRepositoryImpl;
+import com.bwry.repository.impl.*;
 import com.bwry.service.BookLoginService;
 import com.bwry.service.LoginService;
 import com.bwry.service.UserLoginService;
@@ -27,23 +27,24 @@ import com.bwry.service.impl.UserLoginServiceImpl;
 import com.mysql.cj.conf.ConnectionUrl.Type;
 
 
+@SuppressWarnings({ "unused", "serial" })
 @WebServlet("/Login")
 public class LoginServlet extends HttpServlet{
-//注入Servlet对象
+	/* 注入servlet对象 */
 	private LoginService loginService =   new LoginServiceImpl();
 	private UserLoginService userLoginService = new UserLoginServiceImpl();
 	
 	@Override
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-		//解决乱码
+		/* 解决乱码 */
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		String filename = "";
-		//取到type值
+		/* 取到type值 */
 		String types = req.getParameter("type");
 		switch (types) {
-		/*借书后图书数据刷新*/
+		/* 借书后图书数据刷新 */
 		case "UsBookLook":
 			List<Book> userlist = loginService.bookLook(null, null, 0);
 			if (userlist != null) {
@@ -57,7 +58,7 @@ public class LoginServlet extends HttpServlet{
 			
 			filename = "编外人员图书馆设计说明书.docx";
 			resp.setContentType("application/x-msdownload");
-			// ������Ӧͷ
+			// 锟斤拷锟斤拷锟斤拷应头
 			resp.setHeader("Content-Disposition", "attachment;filename=" + filename);
 
 			OutputStream outputStream = resp.getOutputStream();
@@ -77,7 +78,7 @@ public class LoginServlet extends HttpServlet{
 
 				filename = "数据库.docx";
 				resp.setContentType("application/x-msdownload");
-				// ������Ӧͷ
+				// 锟斤拷锟斤拷锟斤拷应头
 				resp.setHeader("Content-Disposition", "attachment;filename=" + filename);
 
 				OutputStream outputStream2 = resp.getOutputStream();
@@ -102,26 +103,26 @@ public class LoginServlet extends HttpServlet{
 	@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-		//解决乱码
+			/* 解决乱码 */
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 			
-		//manage
+			/* manage */
 			String mname = req.getParameter("mname");
 			String mpassword = req.getParameter("mpassword");
 			User user = loginService.login(mname, mpassword);
-		//users
+			/* users */
 			String uname = req.getParameter("uname");
 			String upassword = req.getParameter("upassword");
 			Users users = userLoginService.userLogin(uname, upassword);
-			//取到type值
+			/* 取到type值 */
 			String types = req.getParameter("type");
 			switch (types) {
 			case "manage":
 				if (user != null) {
 					HttpSession session = req.getSession();
 					session.setAttribute("User", user);
-//					System.out.println("��¼�ɹ�");
+//					System.out.println("锟斤拷录锟缴癸拷");
 					req.getRequestDispatcher("/ManageOptions.jsp").forward(req, resp);
 				}else {
 					resp.sendRedirect("/BooksInfoSys/Login.jsp");
@@ -133,7 +134,7 @@ public class LoginServlet extends HttpServlet{
 					HttpSession session = req.getSession();
 					session.setAttribute("Users", users);
 					 req.setAttribute("list", userlist);
-//					System.out.println("��¼�ɹ�");
+//					System.out.println("锟斤拷录锟缴癸拷");
 					req.getRequestDispatcher("/UserBookLook.jsp").forward(req, resp);
 				}else {
 					resp.sendRedirect("/BooksInfoSys/UserLogin.jsp");

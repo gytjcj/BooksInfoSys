@@ -12,7 +12,7 @@ import com.bwry.repository.BroBooksRepository;
 import com.bwry.utils.JDBCTools;
 
 public class BroBooksRepositoryImpl implements BroBooksRepository{
-	//鐢ㄦ埛鏌ョ湅鍊熼槄鎯呭喌
+	/* 用户查看借阅情况 */
 public List<BroBooks> getBroBooks(int id,String userName,String bookName) {
 		
 		// TODO Auto-generated method stub
@@ -39,7 +39,8 @@ public List<BroBooks> getBroBooks(int id,String userName,String bookName) {
 
 		return list;
 	}
-//鍊熶功
+
+	/* 借书 */
 @Override
 public void addBroBooks(String userName, String bookName) {
 	Connection connection = JDBCTools.getConnection(); 
@@ -59,7 +60,8 @@ public void addBroBooks(String userName, String bookName) {
 		JDBCTools.release(connection, statement, resultSet);
 	}
 }
-//杩樹功
+
+/* 还书 */
 @Override
 public int returnBroBooks(int id) {
 	Connection connection = JDBCTools.getConnection(); 
@@ -86,7 +88,8 @@ public int returnBroBooks(int id) {
 	}
 	return resultCUD;
 }
-//鐢ㄦ埛鍊熼槄淇℃伅鏌ョ湅
+
+/* 用户借阅信息查看 */
 @Override
 public List<BroBooks> uBroBook(int id, String userName, String bookName) {
 	// TODO Auto-generated method stub

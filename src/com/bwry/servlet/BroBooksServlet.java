@@ -14,6 +14,7 @@ import com.bwry.entity.BroBooks;
 import com.bwry.service.BroBooksService;
 import com.bwry.service.impl.BroBooksServiceImpl;
 
+@SuppressWarnings({ "serial", "unused" })
 @WebServlet("/BroBooksServlet")
 public class BroBooksServlet extends HttpServlet{
 	private String userName,bookName,method ;
@@ -21,7 +22,7 @@ public class BroBooksServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//瑙ｅ喅涔辩爜
+		/* 解决乱码 */
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		List<BroBooks> broBookslist= broBooksService.BroBooks( 0, userName, bookName);
@@ -36,12 +37,12 @@ public class BroBooksServlet extends HttpServlet{
 				resp.sendRedirect("/");
 			}
 			break;
-			//鍊熶功
+		/* 借书 */
 		case "borrow":	
 			userName=req.getParameter("userName");
 			bookName=req.getParameter("bookName");
 			broBooksService.BroBooks(userName, bookName);
-			//鏌ョ湅
+			/* 查看 */
 			List<BroBooks> usbroBookslist= broBooksService.UBroBooks( 0, userName, bookName);
 			if (usbroBookslist != null) {
 			
@@ -51,7 +52,7 @@ public class BroBooksServlet extends HttpServlet{
 				resp.sendRedirect("/");
 			}
 			break;
-			//杩樹功
+		/* 还书 */
 		case "return":
 			int id= Integer.parseInt(req.getParameter("Did"));
 			userName=req.getParameter("userName");
